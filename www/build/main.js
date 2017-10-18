@@ -206,7 +206,7 @@ var MatchProvider = (function () {
     function MatchProvider(http) {
         this.http = http;
         // this.apiRoot = 'http://localhost:3080/api/';
-        this.apiRoot = 'http://oddsfinder-api.herokuapp.com/api/';
+        this.apiRoot = 'https://oddsfinder-api.herokuapp.com/api/';
         this.apiRoutes = {
             getMatches: this.apiRoot + 'matches'
         };
