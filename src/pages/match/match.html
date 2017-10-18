@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>
+    <ion-buttons end>
+        <button (click)="dismiss()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-list-header *ngIf="match">
+      {{ match.Team1.Name }} vs {{ match.Team2.Name }}
+    </ion-list-header>
+  </ion-list>
+
+</ion-content>

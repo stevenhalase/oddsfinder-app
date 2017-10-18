@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="with-hero">
+
+  <div class="odds-hero">
+    <span>Find the best odds, quick and easy!</span>
+  </div>
+  <ion-list>
+    <ion-list-header>
+      Most Popular Games
+    </ion-list-header>
+    <button ion-item *ngFor="let match of matches" (click)="matchSelected(match)">
+      {{ match.Team1.Name }} vs {{ match.Team2.Name }}
+    </button>  
+  </ion-list>
+
+</ion-content>

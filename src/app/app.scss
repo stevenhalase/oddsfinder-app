@@ -14,3 +14,42 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+$green : #6bc241;
+$white: #FFF;
+
+.text-accent--green {
+  color: $green;
+}
+
+.odds-hero {
+  height: 200px;
+  position: absolute;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  background-image: linear-gradient(rgba(107,194,65,0.9), rgba(74,135,44,0.9)), url('../assets/images/hero-bg.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.odds-hero span {
+    font-size: 48px;
+    font-weight: bold;
+    color: $white;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content.with-hero .scroll-content {
+  padding-top: 200px!important;
+}
+
+ion-list-header {
+  background-color: $green!important;
+  color: $white!important;
+  font-weight: bold!important;
+}
