@@ -163,7 +163,7 @@ var MatchesPage = (function () {
 }());
 MatchesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-matches',template:/*ion-inline-start:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/matches/matches.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="with-hero">\n\n  <div class="odds-hero">\n    <span>Find the best odds, quick and easy!</span>\n  </div>\n  <ion-list>\n    <ion-list-header>\n      Most Popular Games\n    </ion-list-header>\n    <button ion-item *ngFor="let match of matches" (click)="matchSelected(match)">\n      {{ match.Team1.Name }} vs {{ match.Team2.Name }}\n    </button>  \n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/matches/matches.html"*/
+        selector: 'page-matches',template:/*ion-inline-start:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/matches/matches.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="with-hero">\n\n  <div class="odds-hero">\n    <span>Find the best odds, quick and easy!</span>\n  </div>\n  <ion-list>\n    <ion-list-header>\n      Most Popular Games\n    </ion-list-header>\n    <button class="match-button" ion-item *ngFor="let match of matches" (click)="matchSelected(match)">\n      <span>{{ match.Team1 }} vs {{ match.Team2 }}</span>\n      <span item-end>{{ match.League }}</span>\n    </button>  \n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/matches/matches.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__providers_match_match__["a" /* MatchProvider */]])
 ], MatchesPage);
@@ -205,8 +205,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var MatchProvider = (function () {
     function MatchProvider(http) {
         this.http = http;
-        // this.apiRoot = 'http://localhost:3080/api/';
-        this.apiRoot = 'https://oddsfinder-api.herokuapp.com/api/';
+        this.apiRoot = 'http://localhost:3080/api/';
+        // this.apiRoot = 'https://oddsfinder-api.herokuapp.com/api/';
         this.apiRoutes = {
             getMatches: this.apiRoot + 'matches'
         };
@@ -453,7 +453,7 @@ var MatchPage = (function () {
 }());
 MatchPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-match',template:/*ion-inline-start:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match/match.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>\n    <ion-buttons end>\n        <button (click)="dismiss()">\n            <ion-icon name="close"></ion-icon>\n        </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-list-header *ngIf="match">\n      {{ match.Team1.Name }} vs {{ match.Team2.Name }}\n    </ion-list-header>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match/match.html"*/,
+        selector: 'page-match',template:/*ion-inline-start:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match/match.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>\n    <ion-buttons end>\n        <button (click)="dismiss()">\n            <ion-icon name="close"></ion-icon>\n        </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list *ngIf="match">\n    <ion-list-header>\n      {{ match.Team1 }} vs {{ match.Team2 }}\n    </ion-list-header>\n    <ion-list-header class="match-league">\n      {{ match.League }}\n    </ion-list-header>\n    <ion-item class="match-instance" *ngFor="let matchInstance of match.MatchInstances">\n      <img *ngIf="matchInstance.Service === \'https://www.betway.co.ke/\'" src="../../assets/images/betway.png">\n      <div item-end>\n        <span>{{ matchInstance.Team1.Price }}</span>\n        <span>{{ matchInstance.DrawPrice }}</span>\n        <span>{{ matchInstance.Team2.Price }}</span>\n      </div>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match/match.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */]])
 ], MatchPage);

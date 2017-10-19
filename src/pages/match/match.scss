@@ -1,3 +1,26 @@
 page-match {
+  ion-list-header.match-league {
+    background-color: #EEE!important;
+    color: #333!important;
+    font-weight: normal!important;
+    font-size: 12px!important;
+  }
 
+  .match-instance {
+    img {
+      max-width: 100px;
+      height: 30px;
+    }
+
+    div {
+      span {
+        width: 33%;
+        background-color: #6bc241;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: #FFF;
+        font-weight: bold;
+      }
+    }
+  }
 }

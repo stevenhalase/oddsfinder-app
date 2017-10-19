@@ -11,10 +11,21 @@
 
 
 <ion-content>
-  <ion-list>
-    <ion-list-header *ngIf="match">
-      {{ match.Team1.Name }} vs {{ match.Team2.Name }}
+  <ion-list *ngIf="match">
+    <ion-list-header>
+      {{ match.Team1 }} vs {{ match.Team2 }}
     </ion-list-header>
+    <ion-list-header class="match-league">
+      {{ match.League }}
+    </ion-list-header>
+    <ion-item class="match-instance" *ngFor="let matchInstance of match.MatchInstances">
+      <img *ngIf="matchInstance.Service === 'https://www.betway.co.ke/'" src="../../assets/images/betway.png">
+      <div item-end>
+        <span>{{ matchInstance.Team1.Price }}</span>
+        <span>{{ matchInstance.DrawPrice }}</span>
+        <span>{{ matchInstance.Team2.Price }}</span>
+      </div>
+    </ion-item>
   </ion-list>
 
 </ion-content>
