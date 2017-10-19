@@ -25550,6 +25550,10 @@ ion-list-header {
   font-weight: bold !important;
 }
 
+page-match ion-list-header {
+  margin-bottom: 0 !important;
+}
+
 page-match ion-list-header.match-league {
   background-color: #EEE !important;
   color: #333 !important;
