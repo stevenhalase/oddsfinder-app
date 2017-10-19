@@ -16,8 +16,8 @@ export class MatchProvider {
   apiRoutes: ApiRoutes;
 
   constructor(public http: Http) {
-    this.apiRoot = 'http://localhost:3080/api/';
-    // this.apiRoot = 'https://oddsfinder-api.herokuapp.com/api/';
+    // this.apiRoot = 'http://localhost:3080/api/';
+    this.apiRoot = 'https://oddsfinder-api.herokuapp.com/api/';
     
     this.apiRoutes = {
       getMatches: this.apiRoot + 'matches'
