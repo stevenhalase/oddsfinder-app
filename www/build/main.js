@@ -518,8 +518,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var MatchProvider = (function () {
     function MatchProvider(http) {
         this.http = http;
-        this.apiRoot = 'http://localhost:3080/api/';
-        // this.apiRoot = 'https://oddsfinder-api.herokuapp.com/api/';
+        // this.apiRoot = 'http://localhost:3080/api/';
+        this.apiRoot = 'https://oddsfinder-api.herokuapp.com/api/';
         this.apiRoutes = {
             getMatches: this.apiRoot + 'matches',
             getMatchesByLeague: this.apiRoot + 'matches/league/',
@@ -609,15 +609,7 @@ var MatchPage = (function () {
             console.log(data);
         })
             .catch(function (err) {
-            navigator.share({
-                'title': 'OddsFinder Odds',
-                'text': 'Check out these odds.',
-                'url': 'https://oddsfinder-app.herokuapp.com'
-            }).then(function () {
-                console.log('Successful share');
-            }).catch(function (error) {
-                console.log('Error sharing:', error);
-            });
+            console.log(err);
         });
     };
     return MatchPage;
@@ -626,10 +618,9 @@ MatchPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-match',template:/*ion-inline-start:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match/match.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>\n    <ion-buttons end>\n        <button (click)="dismiss()">\n            <ion-icon name="close"></ion-icon>\n        </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list *ngIf="match">\n    <ion-list-header>\n      {{ match.Team1 }} vs {{ match.Team2 }}\n    </ion-list-header>\n    <ion-list-header class="match-league">\n      {{ match.League }}\n    </ion-list-header>\n    <ion-item class="match-instance" *ngFor="let matchInstance of match.MatchInstances">\n      <img *ngIf="matchInstance.Service === \'https://www.betway.co.ke/\'" src="../../assets/images/betway.png">\n      <div item-end>\n        <span (click)="share(matchInstance)" class="share">Share</span>\n        <span>{{ matchInstance.Team1.Price }}</span>\n        <span>{{ matchInstance.DrawPrice }}</span>\n        <span>{{ matchInstance.Team2.Price }}</span>\n      </div>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match/match.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */]])
 ], MatchPage);
 
-var _a, _b, _c, _d;
 //# sourceMappingURL=match.js.map
 
 /***/ })

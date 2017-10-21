@@ -37,15 +37,7 @@ export class MatchPage {
         console.log(data);
       })
       .catch(err => {
-        navigator.share({
-          'title': 'OddsFinder Odds',
-          'text': 'Check out these odds.',
-          'url': 'https://oddsfinder-app.herokuapp.com'
-        }).then(function() {
-          console.log('Successful share');
-        }).catch(function(error) {
-          console.log('Error sharing:', error)
-        });
+        console.log(err);
       })
   }
 
