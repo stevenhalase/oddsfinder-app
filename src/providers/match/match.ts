@@ -3,12 +3,6 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-/*
-  Generated class for the MatchProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class MatchProvider {
 
@@ -16,11 +10,13 @@ export class MatchProvider {
   apiRoutes: ApiRoutes;
 
   constructor(public http: Http) {
-    // this.apiRoot = 'http://localhost:3080/api/';
-    this.apiRoot = 'https://oddsfinder-api.herokuapp.com/api/';
+    this.apiRoot = 'http://localhost:3080/api/';
+    // this.apiRoot = 'https://oddsfinder-api.herokuapp.com/api/';
     
     this.apiRoutes = {
-      getMatches: this.apiRoot + 'matches'
+      getMatches: this.apiRoot + 'matches',
+      getMatchesByLeague: this.apiRoot + 'matches/league/',
+      getTopLeagues: this.apiRoot + 'matches/top-leagues'
     }
   }
 
@@ -33,8 +29,28 @@ export class MatchProvider {
     return promise;
   }
 
+  getMatchesByLeague(league) {
+    let url = this.apiRoutes.getMatchesByLeague + league;
+    let promise = this.http.get(url)
+      .map((res: any) => res.json())
+      .toPromise();
+
+    return promise;
+  }
+
+  getTopLeagues() {
+    let url = this.apiRoutes.getTopLeagues;
+    let promise = this.http.get(url)
+      .map((res: any) => res.json())
+      .toPromise();
+
+    return promise;
+  }
+
 }
 
 class ApiRoutes {
   getMatches: string;
+  getMatchesByLeague: string;
+  getTopLeagues: string;
 }

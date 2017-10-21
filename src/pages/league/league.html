@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>
+    <ion-buttons end>
+        <button (click)="dismiss()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      {{ league }}
+    </ion-list-header>
+    <button class="match-button" ion-item *ngFor="let match of matches" (click)="matchSelected(match)">
+      <span>{{ match.Team1 }} vs {{ match.Team2 }}</span>
+      <span item-end>{{ match.League }}</span>
+    </button>  
+  </ion-list>
+</ion-content>

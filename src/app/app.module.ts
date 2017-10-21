@@ -4,11 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 import { MatchesPage } from '../pages/matches/matches';
 import { SettingsPage } from '../pages/settings/settings';
 import { DashboardPage } from '../pages/dashboard/dashboard';
+import { TopLeaguesPage } from '../pages/top-leagues/top-leagues';
 import { TabsPage } from '../pages/tabs/tabs';
 import { MatchPage } from '../pages/match/match';
+import { LeaguePage } from '../pages/league/league';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,8 +24,10 @@ import { MatchProvider } from '../providers/match/match';
     MatchesPage,
     SettingsPage,
     DashboardPage,
+    TopLeaguesPage,
     TabsPage,
-    MatchPage
+    MatchPage,
+    LeaguePage
   ],
   imports: [
     BrowserModule,
@@ -34,14 +40,17 @@ import { MatchProvider } from '../providers/match/match';
     MatchesPage,
     SettingsPage,
     DashboardPage,
+    TopLeaguesPage,
     TabsPage,
-    MatchPage
+    MatchPage,
+    LeaguePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MatchProvider
+    MatchProvider,
+    SocialSharing
   ]
 })
 export class AppModule {}

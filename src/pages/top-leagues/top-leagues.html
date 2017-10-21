@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-button block *ngFor="let league of topLeagues" (click)="openLeague(league)">{{ league }}</button>
+  </ion-list>
+</ion-content>

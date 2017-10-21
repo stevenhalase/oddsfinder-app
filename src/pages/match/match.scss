@@ -24,6 +24,11 @@ page-match {
         border-radius: 5px;
         color: #FFF;
         font-weight: bold;
+        font-size: 12px;
+
+        &.share {
+          background-color: #b829aa;
+        }
       }
     }
   }

@@ -21,6 +21,7 @@
     <ion-item class="match-instance" *ngFor="let matchInstance of match.MatchInstances">
       <img *ngIf="matchInstance.Service === 'https://www.betway.co.ke/'" src="../../assets/images/betway.png">
       <div item-end>
+        <span (click)="share(matchInstance)" class="share">Share</span>
         <span>{{ matchInstance.Team1.Price }}</span>
         <span>{{ matchInstance.DrawPrice }}</span>
         <span>{{ matchInstance.Team2.Price }}</span>
