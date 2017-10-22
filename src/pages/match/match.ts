@@ -11,7 +11,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 export class MatchPage {
 
   public match: any;
-  public matches: Array<any>;
+  public matches: Array<any> = [];
+  public regions: Array<any> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private socialSharing: SocialSharing) {
   }
@@ -19,6 +20,21 @@ export class MatchPage {
   ionViewDidLoad() {
     this.match = this.navParams.get('match');
     this.matches = this.navParams.get('matches');
+    for (let matchInstance of this.match.MatchInstances) {
+      let region = this.regions.find(el => {
+        return el.name === matchInstance.Region;
+      })
+      if (typeof region === 'undefined') {
+        this.regions.push({
+          name: matchInstance.Region,
+          matchInstances: [matchInstance]
+        })
+      } else {
+        if (region.name === matchInstance.Region) {
+          region.matchInstances.push(matchInstance);
+        }
+      }
+    }
   }
 
   dismiss() {

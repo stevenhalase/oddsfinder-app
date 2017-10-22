@@ -18,15 +18,22 @@
     <ion-list-header class="match-league">
       {{ match.League }}
     </ion-list-header>
-    <ion-item class="match-instance" *ngFor="let matchInstance of match.MatchInstances">
-      <img *ngIf="matchInstance.Service === 'https://www.betway.co.ke/'" src="../../assets/images/betway.png">
-      <div item-end>
-        <span (click)="share(matchInstance)" class="share">Share</span>
-        <span>{{ matchInstance.Team1.Price }}</span>
-        <span>{{ matchInstance.DrawPrice }}</span>
-        <span>{{ matchInstance.Team2.Price }}</span>
-      </div>
-    </ion-item>
+    <div *ngFor="let region of regions">
+      <ion-list-header class="match-league">
+        {{ region.name }}
+      </ion-list-header>
+      <ion-item class="match-instance" *ngFor="let matchInstance of region.matchInstances">
+        <img *ngIf="matchInstance.Service === 'https://www.betway.co.ke/'" src="../../assets/images/betway.png">
+        <img *ngIf="matchInstance.Service === 'https://www.merrybet.com'" src="../../assets/images/merrybet.png">
+        <div item-end>
+          <span (click)="share(matchInstance)" class="share">Share</span>
+          <span>{{ matchInstance.Team1.Price }}</span>
+          <span>{{ matchInstance.DrawPrice }}</span>
+          <span>{{ matchInstance.Team2.Price }}</span>
+        </div>
+      </ion-item>
+    </div>
+    
   </ion-list>
 
 </ion-content>
