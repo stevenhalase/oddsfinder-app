@@ -23,8 +23,11 @@
         {{ region.name }}
       </ion-list-header>
       <ion-item class="match-instance" *ngFor="let matchInstance of region.matchInstances">
-        <img *ngIf="matchInstance.Service === 'https://www.betway.co.ke/'" src="../../assets/images/betway.png">
-        <img *ngIf="matchInstance.Service === 'https://www.merrybet.com'" src="../../assets/images/merrybet.png">
+        <img *ngIf="matchInstance.Service === 'Betway'" src="../../assets/images/betway.png">
+        <img *ngIf="matchInstance.Service === 'MerryBet'" src="../../assets/images/merrybet.png">
+        <img *ngIf="matchInstance.Service === 'PrincessBet'" src="../../assets/images/princessbet.png">
+        <img *ngIf="matchInstance.Service === 'BetPawa'" src="../../assets/images/betpawa.png">
+        <img *ngIf="matchInstance.Service === 'LovingBet'" src="../../assets/images/lovingbet.png">
         <div item-end>
           <span (click)="share(matchInstance)" class="share">Share</span>
           <span>{{ matchInstance.Team1.Price }}</span>
