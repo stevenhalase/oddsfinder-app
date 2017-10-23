@@ -22,7 +22,7 @@
       <ion-list-header class="match-league">
         {{ region.name }}
       </ion-list-header>
-      <ion-item class="match-instance" *ngFor="let matchInstance of region.matchInstances">
+      <ion-item class="match-instance" *ngFor="let matchInstance of region.matchInstances" (click)="matchInstanceSelected(matchInstance)">
         <img *ngIf="matchInstance.Service === 'Betway'" src="../../assets/images/betway.png">
         <img *ngIf="matchInstance.Service === 'MerryBet'" src="../../assets/images/merrybet.png">
         <img *ngIf="matchInstance.Service === 'PrincessBet'" src="../../assets/images/princessbet.png">
@@ -36,7 +36,5 @@
         </div>
       </ion-item>
     </div>
-    
   </ion-list>
-
 </ion-content>

@@ -12,6 +12,7 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { TopLeaguesPage } from '../pages/top-leagues/top-leagues';
 import { TabsPage } from '../pages/tabs/tabs';
 import { MatchPage } from '../pages/match/match';
+import { MatchDetailPage } from '../pages/match-detail/match-detail';
 import { LeaguePage } from '../pages/league/league';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -27,6 +28,7 @@ import { MatchProvider } from '../providers/match/match';
     TopLeaguesPage,
     TabsPage,
     MatchPage,
+    MatchDetailPage,
     LeaguePage
   ],
   imports: [
@@ -43,6 +45,7 @@ import { MatchProvider } from '../providers/match/match';
     TopLeaguesPage,
     TabsPage,
     MatchPage,
+    MatchDetailPage,
     LeaguePage
   ],
   providers: [

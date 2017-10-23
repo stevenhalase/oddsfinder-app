@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
+import { ModalController } from 'ionic-angular';
+import { MatchDetailPage } from '../match-detail/match-detail';
+
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 @IonicPage()
@@ -14,7 +17,7 @@ export class MatchPage {
   public matches: Array<any> = [];
   public regions: Array<any> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private socialSharing: SocialSharing) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public modalCtrl: ModalController, private socialSharing: SocialSharing) {
   }
 
   ionViewDidLoad() {
@@ -35,6 +38,11 @@ export class MatchPage {
         }
       }
     }
+  }
+
+  matchInstanceSelected(matchInstance) {
+    let modal = this.modalCtrl.create(MatchDetailPage, { matchInstance: matchInstance });
+    modal.present();
   }
 
   dismiss() {

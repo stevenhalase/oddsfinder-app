@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>
+    <ion-buttons end>
+        <button (click)="dismiss()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list *ngIf="matchInstance">
+    <ion-list-header>
+      {{ matchInstance.Team1.Name }} vs {{ matchInstance.Team2.Name }}
+    </ion-list-header>
+    <div>
+      <ion-list-header class="match-league">
+        {{ matchInstance.Region }}
+      </ion-list-header>
+      <ion-item class="match-instance">
+        <img *ngIf="matchInstance.Service === 'Betway'" src="../../assets/images/betway.png">
+        <img *ngIf="matchInstance.Service === 'MerryBet'" src="../../assets/images/merrybet.png">
+        <img *ngIf="matchInstance.Service === 'PrincessBet'" src="../../assets/images/princessbet.png">
+        <img *ngIf="matchInstance.Service === 'BetPawa'" src="../../assets/images/betpawa.png">
+        <img *ngIf="matchInstance.Service === 'LovingBet'" src="../../assets/images/lovingbet.png">
+        <div item-end>
+          <span (click)="share(matchInstance)" class="share">Share</span>
+          <span>{{ matchInstance.Team1.Price }}</span>
+          <span>{{ matchInstance.DrawPrice }}</span>
+          <span>{{ matchInstance.Team2.Price }}</span>
+        </div>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>
