@@ -25554,6 +25554,18 @@ page-match ion-list-header {
   margin-bottom: 0 !important;
 }
 
+page-match ion-list-header .item-inner {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+  -webkit-flex-direction: column !important;
+  -ms-flex-direction: column !important;
+  flex-direction: column !important;
+}
+
 page-match ion-list-header .psuedokey {
   font-size: 8px !important;
 }
@@ -25586,6 +25598,18 @@ page-match .match-instance div span.share {
 
 page-match-detail ion-list-header {
   margin-bottom: 0 !important;
+}
+
+page-match-detail ion-list-header .item-inner {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+  -webkit-flex-direction: column !important;
+  -ms-flex-direction: column !important;
+  flex-direction: column !important;
 }
 
 page-match-detail ion-list-header .psuedokey {
