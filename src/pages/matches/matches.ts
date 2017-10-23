@@ -20,6 +20,9 @@ export class MatchesPage {
 
   getMatches() {
     this.matchProvider.getMatches().then(matches => {
+      matches.sort((a, b) => {
+        return a.League < b.League;
+      })
       this.matches = matches;
       console.log(matches)
     });
