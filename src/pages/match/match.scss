@@ -2,6 +2,11 @@ page-match {
   ion-list-header {
     margin-bottom: 0!important;
 
+    .item-inner {
+      display: flex!important;
+      flex-direction: column!important;
+    }
+
     .psuedokey {
       font-size: 8px!important;
     }
