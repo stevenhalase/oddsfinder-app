@@ -14,12 +14,10 @@
   <ion-list *ngIf="match">
     <ion-list-header>
       {{ match.Team1 }} vs {{ match.Team2 }}
+      <span class="psuedokey" item-end>{{ match.PsuedoKey }}</span>
     </ion-list-header>
     <ion-list-header class="match-league">
       {{ match.League }}
-    </ion-list-header>
-    <ion-list-header class="match-league">
-      {{ match.PsuedoKey }}
     </ion-list-header>
     <div *ngFor="let region of regions">
       <ion-list-header class="match-league">

@@ -25554,6 +25554,10 @@ page-match ion-list-header {
   margin-bottom: 0 !important;
 }
 
+page-match ion-list-header .psuedokey {
+  font-size: 8px !important;
+}
+
 page-match ion-list-header.match-league {
   background-color: #EEE !important;
   color: #333 !important;
@@ -25582,6 +25586,10 @@ page-match .match-instance div span.share {
 
 page-match-detail ion-list-header {
   margin-bottom: 0 !important;
+}
+
+page-match-detail ion-list-header .psuedokey {
+  font-size: 8px !important;
 }
 
 page-match-detail ion-list-header.match-league {

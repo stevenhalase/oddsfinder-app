@@ -1,6 +1,10 @@
 page-match-detail {
   ion-list-header {
     margin-bottom: 0!important;
+    
+    .psuedokey {
+      font-size: 8px!important;
+    }
   }
 
   ion-list-header.match-league {
