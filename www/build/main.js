@@ -4,67 +4,6 @@ webpackJsonp([3],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatchDetailPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__ = __webpack_require__(79);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var MatchDetailPage = (function () {
-    function MatchDetailPage(navCtrl, navParams, viewCtrl, socialSharing) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.socialSharing = socialSharing;
-    }
-    MatchDetailPage.prototype.ionViewDidLoad = function () {
-        this.matchInstance = this.navParams.get('matchInstance');
-    };
-    MatchDetailPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    MatchDetailPage.prototype.share = function (matchInstance) {
-        var options = {
-            message: 'Check out these odds.',
-            subject: 'OddsFinder Odds',
-            url: 'https://oddsfinder-app.herokuapp.com',
-            chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
-        };
-        this.socialSharing.shareWithOptions(options)
-            .then(function (data) {
-            console.log(data);
-        })
-            .catch(function (err) {
-            console.log(err);
-        });
-    };
-    return MatchDetailPage;
-}());
-MatchDetailPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-match-detail',template:/*ion-inline-start:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match-detail/match-detail.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title text-center *ngIf="!matchInstance">Match</ion-title>\n    <ion-title text-center *ngIf="matchInstance">{{ matchInstance.Team1.Name }} vs {{ matchInstance.Team2.Name }}</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span ion-text color="primary" showWhen="ios">Cancel</span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-navbar class="logo">\n    <ion-title item-start>Odds<span class="text-accent--green">Finder</span></ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list *ngIf="matchInstance">\n    <!-- <ion-list-header>\n      <span class="psuedokey" item-end>{{ matchInstance.PsuedoKey }}</span>\n    </ion-list-header> -->\n    <div>\n      <ion-list-header class="match-league">\n        {{ matchInstance.Region }}\n      </ion-list-header>\n      <ion-item class="match-instance">\n        <img *ngIf="matchInstance.Service === \'Betway\'" src="../../assets/images/betway.png">\n        <img *ngIf="matchInstance.Service === \'MerryBet\'" src="../../assets/images/merrybet.png">\n        <img *ngIf="matchInstance.Service === \'PrincessBet\'" src="../../assets/images/princessbet.png">\n        <img *ngIf="matchInstance.Service === \'BetPawa\'" src="../../assets/images/betpawa.png">\n        <img *ngIf="matchInstance.Service === \'LovingBet\'" src="../../assets/images/lovingbet.png">\n        <div item-end>\n          <span (click)="share(matchInstance)" class="share">Share</span>\n          <span>{{ matchInstance.Team1.Price }}</span>\n          <span>{{ matchInstance.DrawPrice }}</span>\n          <span>{{ matchInstance.Team2.Price }}</span>\n        </div>\n      </ion-item>\n    </div>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match-detail/match-detail.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */]])
-], MatchDetailPage);
-
-//# sourceMappingURL=match-detail.js.map
-
-/***/ }),
-
-/***/ 104:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LeaguePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
@@ -159,6 +98,67 @@ LeaguePage = __decorate([
 
 /***/ }),
 
+/***/ 104:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatchDetailPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__ = __webpack_require__(79);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MatchDetailPage = (function () {
+    function MatchDetailPage(navCtrl, navParams, viewCtrl, socialSharing) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.socialSharing = socialSharing;
+    }
+    MatchDetailPage.prototype.ionViewDidLoad = function () {
+        this.matchInstance = this.navParams.get('matchInstance');
+    };
+    MatchDetailPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    MatchDetailPage.prototype.share = function (matchInstance) {
+        var options = {
+            message: 'Check out these odds.',
+            subject: 'OddsFinder Odds',
+            url: 'https://oddsfinder-app.herokuapp.com',
+            chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+        };
+        this.socialSharing.shareWithOptions(options)
+            .then(function (data) {
+            console.log(data);
+        })
+            .catch(function (err) {
+            console.log(err);
+        });
+    };
+    return MatchDetailPage;
+}());
+MatchDetailPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-match-detail',template:/*ion-inline-start:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match-detail/match-detail.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title text-center *ngIf="!matchInstance">Match</ion-title>\n    <ion-title text-center *ngIf="matchInstance">{{ matchInstance.Team1.Name }} vs {{ matchInstance.Team2.Name }}</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span ion-text color="primary" showWhen="ios">Cancel</span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-navbar class="logo">\n    <ion-title item-start>Odds<span class="text-accent--green">Finder</span></ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list *ngIf="matchInstance">\n    <!-- <ion-list-header>\n      <span class="psuedokey" item-end>{{ matchInstance.PsuedoKey }}</span>\n    </ion-list-header> -->\n    <div>\n      <ion-list-header class="match-league">\n        {{ matchInstance.Region }}\n      </ion-list-header>\n      <ion-item class="match-instance">\n        <img *ngIf="matchInstance.Service === \'Betway\'" src="../../assets/images/betway.png">\n        <img *ngIf="matchInstance.Service === \'MerryBet\'" src="../../assets/images/merrybet.png">\n        <img *ngIf="matchInstance.Service === \'PrincessBet\'" src="../../assets/images/princessbet.png">\n        <img *ngIf="matchInstance.Service === \'BetPawa\'" src="../../assets/images/betpawa.png">\n        <img *ngIf="matchInstance.Service === \'LovingBet\'" src="../../assets/images/lovingbet.png">\n        <div item-end>\n          <span (click)="share(matchInstance)" class="share">Share</span>\n          <span>{{ matchInstance.Team1.Price }}</span>\n          <span>{{ matchInstance.DrawPrice }}</span>\n          <span>{{ matchInstance.Team2.Price }}</span>\n        </div>\n      </ion-item>\n    </div>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match-detail/match-detail.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */]])
+], MatchDetailPage);
+
+//# sourceMappingURL=match-detail.js.map
+
+/***/ }),
+
 /***/ 113:
 /***/ (function(module, exports) {
 
@@ -181,11 +181,11 @@ webpackEmptyAsyncContext.id = 113;
 
 var map = {
 	"../pages/league/league.module": [
-		276,
+		275,
 		2
 	],
 	"../pages/match-detail/match-detail.module": [
-		275,
+		276,
 		1
 	],
 	"../pages/match/match.module": [
@@ -386,7 +386,7 @@ LoginPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_match_match__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__league_league__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__league_league__ = __webpack_require__(103);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -469,8 +469,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_top_leagues_top_leagues__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_tabs_tabs__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_match_match__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_match_detail_match_detail__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_league_league__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_match_detail_match_detail__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_league_league__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_status_bar__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_splash_screen__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_match_match__ = __webpack_require__(46);
@@ -520,8 +520,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                 links: [
-                    { loadChildren: '../pages/match-detail/match-detail.module#MatchDetailPageModule', name: 'MatchDetailPage', segment: 'match-detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/league/league.module#LeaguePageModule', name: 'LeaguePage', segment: 'league', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/match-detail/match-detail.module#MatchDetailPageModule', name: 'MatchDetailPage', segment: 'match-detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/match/match.module#MatchPageModule', name: 'MatchPage', segment: 'match', priority: 'low', defaultHistory: [] }
                 ]
             })
@@ -640,9 +640,9 @@ SettingsPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatchProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(245);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -712,7 +712,7 @@ var ApiRoutes = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatchPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__match_detail_match_detail__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__match_detail_match_detail__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__ = __webpack_require__(79);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -789,7 +789,7 @@ var MatchPage = (function () {
 }());
 MatchPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-match',template:/*ion-inline-start:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match/match.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title text-center *ngIf="!match">Match</ion-title>\n    <ion-title text-center *ngIf="match">{{ match.Team1 }} vs {{ match.Team2 }}</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span ion-text color="primary" showWhen="ios">Cancel</span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-navbar class="logo">\n    <ion-title item-start>Odds<span class="text-accent--green">Finder</span></ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list *ngIf="match">\n    <!-- <ion-list-header>\n      <span class="psuedokey" item-end>{{ match.PsuedoKey }}</span>\n    </ion-list-header> -->\n    <ion-list-header>\n      {{ match.League }}\n    </ion-list-header>\n    <div *ngFor="let region of regions">\n      <ion-list-header class="match-league">\n        {{ region.name }}\n      </ion-list-header>\n      <ion-item class="match-instance" *ngFor="let matchInstance of region.matchInstances">\n        <img *ngIf="matchInstance.Service === \'Betway\'" src="../../assets/images/betway.png">\n        <img *ngIf="matchInstance.Service === \'MerryBet\'" src="../../assets/images/merrybet.png">\n        <img *ngIf="matchInstance.Service === \'PrincessBet\'" src="../../assets/images/princessbet.png">\n        <img *ngIf="matchInstance.Service === \'BetPawa\'" src="../../assets/images/betpawa.png">\n        <img *ngIf="matchInstance.Service === \'LovingBet\'" src="../../assets/images/lovingbet.png">\n        <div item-end>\n          <span (click)="share(matchInstance)" class="share">Share</span>\n          <span>{{ matchInstance.Team1.Price }}</span>\n          <span>{{ matchInstance.DrawPrice }}</span>\n          <span>{{ matchInstance.Team2.Price }}</span>\n        </div>\n      </ion-item>\n    </div>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match/match.html"*/,
+        selector: 'page-match',template:/*ion-inline-start:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match/match.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title text-center *ngIf="!match">Match</ion-title>\n    <ion-title text-center *ngIf="match">{{ match.Team1 }} vs {{ match.Team2 }}</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span ion-text color="primary" showWhen="ios">Cancel</span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-navbar class="logo">\n    <ion-title item-start>Odds<span class="text-accent--green">Finder</span></ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list *ngIf="match">\n    <!-- <ion-list-header>\n      <span class="psuedokey" item-end>{{ match.PsuedoKey }}</span>\n    </ion-list-header> -->\n    <ion-list-header>\n      {{ match.League }}\n    </ion-list-header>\n    <div *ngFor="let region of regions">\n      <ion-list-header class="match-league">\n        {{ region.name }}\n      </ion-list-header>\n      <ion-item class="match-instance" *ngFor="let matchInstance of region.matchInstances">\n        <img *ngIf="matchInstance.Service === \'Betway\'" src="assets/images/betway.png">\n        <img *ngIf="matchInstance.Service === \'MerryBet\'" src="assets/images/merrybet.png">\n        <img *ngIf="matchInstance.Service === \'PrincessBet\'" src="assets/images/princessbet.png">\n        <img *ngIf="matchInstance.Service === \'BetPawa\'" src="assets/images/betpawa.png">\n        <img *ngIf="matchInstance.Service === \'LovingBet\'" src="assets/images/lovingbet.png">\n        <div item-end>\n          <span (click)="share(matchInstance)" class="share">Share</span>\n          <span>{{ matchInstance.Team1.Price }}</span>\n          <span>{{ matchInstance.DrawPrice }}</span>\n          <span>{{ matchInstance.Team2.Price }}</span>\n        </div>\n      </ion-item>\n    </div>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/match/match.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__["a" /* SocialSharing */]])
 ], MatchPage);
