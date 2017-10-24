@@ -18,6 +18,7 @@
 $green : #6bc241;
 $purple : #b829aa;
 $white: #FFF;
+$black: #000;
 
 .text-accent--green {
   color: $green;
@@ -35,7 +36,7 @@ $white: #FFF;
 }
 
 .odds-hero span {
-    font-size: 48px;
+    font-size: 28px;
     font-weight: bold;
     color: $white;
     width: 80%;
@@ -47,6 +48,21 @@ $white: #FFF;
 
 .content.with-hero .scroll-content {
   padding-top: 200px!important;
+}
+
+ion-navbar.logo .toolbar-background {
+  background-color: $black!important;
+}
+
+ion-navbar.logo .title {
+  padding: 0 15px 1px!important;
+}
+
+ion-navbar.logo .toolbar-title {
+  font-size: 22px!important;
+  padding: 0!important;
+  text-align: left!important;
+  color: $white!important;
 }
 
 ion-list-header {

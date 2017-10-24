@@ -25529,7 +25529,7 @@ ion-navbar.toolbar {
 }
 
 .odds-hero span {
-  font-size: 48px;
+  font-size: 28px;
   font-weight: bold;
   color: #FFF;
   width: 80%;
@@ -25544,10 +25544,29 @@ ion-navbar.toolbar {
   padding-top: 200px !important;
 }
 
+ion-navbar.logo .toolbar-background {
+  background-color: #000 !important;
+}
+
+ion-navbar.logo .title {
+  padding: 0 15px 1px !important;
+}
+
+ion-navbar.logo .toolbar-title {
+  font-size: 22px !important;
+  padding: 0 !important;
+  text-align: left !important;
+  color: #FFF !important;
+}
+
 ion-list-header {
   background-color: #6bc241 !important;
   color: #FFF !important;
   font-weight: bold !important;
+}
+
+page-login button {
+  margin-top: 15px !important;
 }
 
 page-match ion-list-header {

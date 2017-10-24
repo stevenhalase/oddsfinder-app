@@ -1,22 +1,22 @@
 <ion-header>
   <ion-navbar>
+    <ion-title text-center>Popular Matches</ion-title>
+  </ion-navbar>
+  <ion-navbar class="logo">
     <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="with-hero">
-
-  <div class="odds-hero">
-    <span>Find the best odds, quick and easy!</span>
-  </div>
+<ion-content>
   <ion-list>
-    <ion-list-header>
-      Most Popular Games
-    </ion-list-header>
-    <button class="match-button" ion-item *ngFor="let match of matches" (click)="matchSelected(match)">
+    <button class="match-button" ion-item *ngFor="let match of displayedMatches" (click)="matchSelected(match)">
       <span>{{ match.Team1 }} vs {{ match.Team2 }}</span>
       <span item-end>{{ match.League }}</span>
     </button>  
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>

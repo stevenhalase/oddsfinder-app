@@ -8,7 +8,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { MatchesPage } from '../pages/matches/matches';
 import { SettingsPage } from '../pages/settings/settings';
-import { DashboardPage } from '../pages/dashboard/dashboard';
+import { LoginPage } from '../pages/login/login';
 import { TopLeaguesPage } from '../pages/top-leagues/top-leagues';
 import { TabsPage } from '../pages/tabs/tabs';
 import { MatchPage } from '../pages/match/match';
@@ -24,7 +24,7 @@ import { MatchProvider } from '../providers/match/match';
     MyApp,
     MatchesPage,
     SettingsPage,
-    DashboardPage,
+    LoginPage,
     TopLeaguesPage,
     TabsPage,
     MatchPage,
@@ -41,7 +41,7 @@ import { MatchProvider } from '../providers/match/match';
     MyApp,
     MatchesPage,
     SettingsPage,
-    DashboardPage,
+    LoginPage,
     TopLeaguesPage,
     TabsPage,
     MatchPage,

@@ -1,21 +1,25 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Odds<span class="text-accent--green">Finder</span></ion-title>
-    <ion-buttons end>
-        <button (click)="dismiss()">
-            <ion-icon name="close"></ion-icon>
-        </button>
+    <ion-title text-center *ngIf="!matchInstance">Match</ion-title>
+    <ion-title text-center *ngIf="matchInstance">{{ matchInstance.Team1.Name }} vs {{ matchInstance.Team2.Name }}</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
     </ion-buttons>
+  </ion-navbar>
+  <ion-navbar class="logo">
+    <ion-title item-start>Odds<span class="text-accent--green">Finder</span></ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
   <ion-list *ngIf="matchInstance">
-    <ion-list-header>
-      {{ matchInstance.Team1.Name }} vs {{ matchInstance.Team2.Name }}
+    <!-- <ion-list-header>
       <span class="psuedokey" item-end>{{ matchInstance.PsuedoKey }}</span>
-    </ion-list-header>
+    </ion-list-header> -->
     <div>
       <ion-list-header class="match-league">
         {{ matchInstance.Region }}
