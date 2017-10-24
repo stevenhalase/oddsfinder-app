@@ -24,6 +24,9 @@ export class MatchesPage {
     this.matchProvider.getMatches()
       .then(matches => {
         this.matches = matches;
+        this.matches = this.matches.sort((a, b) => {
+          return a.League.localeCompare(b.League);
+        })
         if (this.matches.length > 20) {
           this.infiniteCount += 20;
           this.displayedMatches = this.matches.slice(0,this.infiniteCount - 1);

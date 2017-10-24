@@ -4,101 +4,6 @@ webpackJsonp([3],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LeaguePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_match_match__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__match_match__ = __webpack_require__(51);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var LeaguePage = (function () {
-    function LeaguePage(navCtrl, navParams, viewCtrl, matchProvider, modalCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.matchProvider = matchProvider;
-        this.modalCtrl = modalCtrl;
-        this.displayedMatches = [];
-        this.matches = [];
-        this.infiniteCount = 0;
-    }
-    LeaguePage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.league = this.navParams.get('league');
-        this.matchProvider.getMatchesByLeague(this.league)
-            .then(function (matches) {
-            _this.matches = matches;
-            if (_this.matches.length > 20) {
-                _this.infiniteCount += 20;
-                _this.displayedMatches = _this.matches.slice(0, _this.infiniteCount - 1);
-            }
-            else {
-                _this.infiniteCount += _this.matches.length;
-                _this.displayedMatches = _this.matches.slice(0, _this.infiniteCount - 1);
-            }
-        })
-            .catch(function (err) {
-            console.log(err);
-        });
-    };
-    LeaguePage.prototype.matchSelected = function (match) {
-        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__match_match__["a" /* MatchPage */], { match: match, matches: this.matches });
-        modal.present();
-    };
-    LeaguePage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    LeaguePage.prototype.doInfinite = function (infiniteScroll) {
-        var _this = this;
-        if (this.infiniteCount < this.matches.length) {
-            setTimeout(function () {
-                if (_this.matches.length > _this.infiniteCount + 20) {
-                    var nextPortion = _this.matches.slice(_this.infiniteCount, _this.infiniteCount + 19);
-                    _this.infiniteCount += 20;
-                    _this.displayedMatches = _this.displayedMatches.concat(nextPortion);
-                    infiniteScroll.complete();
-                }
-                else {
-                    var nextPortion = _this.matches.slice(_this.infiniteCount, _this.matches.length - 1);
-                    _this.infiniteCount = _this.matches.length;
-                    _this.displayedMatches = _this.displayedMatches.concat(nextPortion);
-                    infiniteScroll.complete();
-                }
-            }, 500);
-        }
-        else {
-            infiniteScroll.complete();
-        }
-    };
-    return LeaguePage;
-}());
-LeaguePage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-league',template:/*ion-inline-start:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/league/league.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title text-center>{{ league }}</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span ion-text color="primary" showWhen="ios">Cancel</span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-navbar class="logo">\n    <ion-title item-start>Odds<span class="text-accent--green">Finder</span></ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <button class="match-button" ion-item *ngFor="let match of displayedMatches" (click)="matchSelected(match)">\n      <span>{{ match.Team1 }} vs {{ match.Team2 }}</span>\n      <span item-end>{{ match.League }}</span>\n    </button>  \n  </ion-list>\n\n  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n</ion-content>\n'/*ion-inline-end:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/league/league.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_match_match__["a" /* MatchProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */]])
-], LeaguePage);
-
-//# sourceMappingURL=league.js.map
-
-/***/ }),
-
-/***/ 104:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatchDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
@@ -156,6 +61,104 @@ MatchDetailPage = __decorate([
 
 /***/ }),
 
+/***/ 104:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LeaguePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_match_match__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__match_match__ = __webpack_require__(51);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var LeaguePage = (function () {
+    function LeaguePage(navCtrl, navParams, viewCtrl, matchProvider, modalCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.matchProvider = matchProvider;
+        this.modalCtrl = modalCtrl;
+        this.displayedMatches = [];
+        this.matches = [];
+        this.infiniteCount = 0;
+    }
+    LeaguePage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        this.league = this.navParams.get('league');
+        this.matchProvider.getMatchesByLeague(this.league)
+            .then(function (matches) {
+            _this.matches = matches;
+            _this.matches = _this.matches.sort(function (a, b) {
+                return a.League.localeCompare(b.League);
+            });
+            if (_this.matches.length > 20) {
+                _this.infiniteCount += 20;
+                _this.displayedMatches = _this.matches.slice(0, _this.infiniteCount - 1);
+            }
+            else {
+                _this.infiniteCount += _this.matches.length;
+                _this.displayedMatches = _this.matches.slice(0, _this.infiniteCount - 1);
+            }
+        })
+            .catch(function (err) {
+            console.log(err);
+        });
+    };
+    LeaguePage.prototype.matchSelected = function (match) {
+        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__match_match__["a" /* MatchPage */], { match: match, matches: this.matches });
+        modal.present();
+    };
+    LeaguePage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    LeaguePage.prototype.doInfinite = function (infiniteScroll) {
+        var _this = this;
+        if (this.infiniteCount < this.matches.length) {
+            setTimeout(function () {
+                if (_this.matches.length > _this.infiniteCount + 20) {
+                    var nextPortion = _this.matches.slice(_this.infiniteCount, _this.infiniteCount + 19);
+                    _this.infiniteCount += 20;
+                    _this.displayedMatches = _this.displayedMatches.concat(nextPortion);
+                    infiniteScroll.complete();
+                }
+                else {
+                    var nextPortion = _this.matches.slice(_this.infiniteCount, _this.matches.length - 1);
+                    _this.infiniteCount = _this.matches.length;
+                    _this.displayedMatches = _this.displayedMatches.concat(nextPortion);
+                    infiniteScroll.complete();
+                }
+            }, 500);
+        }
+        else {
+            infiniteScroll.complete();
+        }
+    };
+    return LeaguePage;
+}());
+LeaguePage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-league',template:/*ion-inline-start:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/league/league.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title text-center>{{ league }}</ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span ion-text color="primary" showWhen="ios">Cancel</span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-navbar class="logo">\n    <ion-title item-start>Odds<span class="text-accent--green">Finder</span></ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <button class="match-button" ion-item *ngFor="let match of displayedMatches" (click)="matchSelected(match)">\n      <span>{{ match.Team1 }} vs {{ match.Team2 }}</span>\n      <span item-end>{{ match.League }}</span>\n    </button>  \n  </ion-list>\n\n  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n</ion-content>\n'/*ion-inline-end:"/Users/stevenhalase/Documents/oddsfinder-app/oddsfinder/src/pages/league/league.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_match_match__["a" /* MatchProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */]])
+], LeaguePage);
+
+//# sourceMappingURL=league.js.map
+
+/***/ }),
+
 /***/ 113:
 /***/ (function(module, exports) {
 
@@ -178,11 +181,11 @@ webpackEmptyAsyncContext.id = 113;
 
 var map = {
 	"../pages/league/league.module": [
-		275,
+		276,
 		2
 	],
 	"../pages/match-detail/match-detail.module": [
-		276,
+		275,
 		1
 	],
 	"../pages/match/match.module": [
@@ -285,6 +288,9 @@ var MatchesPage = (function () {
         this.matchProvider.getMatches()
             .then(function (matches) {
             _this.matches = matches;
+            _this.matches = _this.matches.sort(function (a, b) {
+                return a.League.localeCompare(b.League);
+            });
             if (_this.matches.length > 20) {
                 _this.infiniteCount += 20;
                 _this.displayedMatches = _this.matches.slice(0, _this.infiniteCount - 1);
@@ -380,7 +386,7 @@ LoginPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_match_match__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__league_league__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__league_league__ = __webpack_require__(104);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -463,8 +469,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_top_leagues_top_leagues__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_tabs_tabs__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_match_match__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_match_detail_match_detail__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_league_league__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_match_detail_match_detail__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_league_league__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_status_bar__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_splash_screen__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_match_match__ = __webpack_require__(46);
@@ -514,8 +520,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                 links: [
-                    { loadChildren: '../pages/league/league.module#LeaguePageModule', name: 'LeaguePage', segment: 'league', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/match-detail/match-detail.module#MatchDetailPageModule', name: 'MatchDetailPage', segment: 'match-detail', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/league/league.module#LeaguePageModule', name: 'LeaguePage', segment: 'league', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/match/match.module#MatchPageModule', name: 'MatchPage', segment: 'match', priority: 'low', defaultHistory: [] }
                 ]
             })
@@ -634,9 +640,9 @@ SettingsPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatchProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__(254);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -706,7 +712,7 @@ var ApiRoutes = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatchPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__match_detail_match_detail__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__match_detail_match_detail__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__ = __webpack_require__(79);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
