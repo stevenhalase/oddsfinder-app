@@ -12,27 +12,102 @@
   <div class="odds-hero">
     <span>Login for the best local odds and a personalised experience!</span>
   </div>
-  <ion-list>
 
-    <ion-item>
-      <ion-label floating>Mobile Number</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Football Team</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Country</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <button ion-button block icon-left>
-      <ion-icon name="logo-facebook" item-start></ion-icon>
-      Login with Facebook
+  <div class="logged-in-container" *ngIf="authProvider.currentUser">
+    <ion-icon name="checkbox"></ion-icon>
+    <button ion-button (click)="logoutUser()">
+      Logout
     </button>
+  </div>
 
-  </ion-list>
+  <ion-segment [(ngModel)]="authType">
+    <ion-segment-button value="login">
+      Login
+    </ion-segment-button>
+    <ion-segment-button value="register">
+      Register
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="authType">
+    <ion-list *ngSwitchCase="'login'">
+
+      <ion-item [ngClass]="{'invalid': !formFields.email}">
+        <ion-label floating>Email Address</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+
+      <ion-item [ngClass]="{'invalid': !formFields.password}">
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password" (focus)="passwordFocus = true" (focusout)="passwordFocus = false" (keyup)="validatePassword()"></ion-input>
+      </ion-item>
+
+      <div class="password-rules" *ngIf="passwordFocus">
+        <ul>
+          <li [ngClass]="{'invalid': !passwordRules.minChars, 'valid': passwordRules.minChars}">Password must contain at least 6 characters.</li>
+          <li [ngClass]="{'invalid': !passwordRules.maxChars, 'valid': passwordRules.maxChars}">Password must be shorter than 50 characters.</li>
+          <li [ngClass]="{'invalid': !passwordRules.minNumbers, 'valid': passwordRules.minNumbers}">Password must contain at least 1 number.</li>
+          <li [ngClass]="{'invalid': !passwordRules.minLetters, 'valid': passwordRules.minLetters}">Password must contain at least 1 letter.</li>
+        </ul>
+      </div>
+
+      <button ion-button block icon-left (click)="loginUser()">
+        <ion-icon name="contact" item-start></ion-icon>
+        Login
+      </button>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'register'">
+
+      <ion-item [ngClass]="{'invalid': !formFields.mobile_number}">
+        <ion-label floating>Mobile Number</ion-label>
+        <ion-input type="tel" [(ngModel)]="user.mobile_number"></ion-input>
+      </ion-item>
+
+      <ion-item [ngClass]="{'invalid': !formFields.football_team}">
+        <ion-label floating>Football Team</ion-label>
+        <ion-input type="text" [(ngModel)]="user.football_team"></ion-input>
+      </ion-item>
+
+      <ion-item [ngClass]="{'invalid': !formFields.email}">
+        <ion-label floating>Email Address</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+
+      <ion-item [ngClass]="{'invalid': !formFields.password}">
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password" (focus)="passwordFocus = true" (focusout)="passwordFocus = false" (keyup)="validatePassword()"></ion-input>
+      </ion-item>
+
+      <div class="password-rules" *ngIf="passwordFocus">
+        <ul>
+          <li [ngClass]="{'invalid': !passwordRules.minChars, 'valid': passwordRules.minChars}">Password must contain at least 6 characters.</li>
+          <li [ngClass]="{'invalid': !passwordRules.maxChars, 'valid': passwordRules.maxChars}">Password must be shorter than 50 characters.</li>
+          <li [ngClass]="{'invalid': !passwordRules.minNumbers, 'valid': passwordRules.minNumbers}">Password must contain at least 1 number.</li>
+          <li [ngClass]="{'invalid': !passwordRules.minLetters, 'valid': passwordRules.minLetters}">Password must contain at least 1 letter.</li>
+        </ul>
+      </div>
+
+      <ion-item class="location-notification">
+        <ion-label> Use My Location to provide me with personalized odds.</ion-label>
+        <ion-toggle [(ngModel)]="allowUserLocation"></ion-toggle>
+      </ion-item>
+
+      <ion-item *ngIf="allowUserLocation === false">
+        <ion-label floating>Country</ion-label>
+        <ion-select [(ngModel)]="user.country">
+          <ion-option value="{{country}}" *ngFor="let country of countryList">{{country}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+      <button ion-button block icon-left (click)="createUser()">
+        <ion-icon name="contact" item-start></ion-icon>
+        Register
+      </button>
+
+    </ion-list>
+    
+  </div>
 </ion-content>
