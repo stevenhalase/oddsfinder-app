@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, ToastController, LoadingController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, ToastController, LoadingController, Content } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 
 import { Http } from '@angular/http';
@@ -13,6 +13,7 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'login.html'
 })
 export class LoginPage {
+  @ViewChild(Content) content: Content;
 
   public authType: string = 'login';
 
@@ -159,6 +160,9 @@ export class LoginPage {
 
   logoutUser() {
     this.authProvider.logoutUser();
+    setTimeout(() => {
+      this.content.resize();
+    }, 50);
   }
 
   validateForm() {

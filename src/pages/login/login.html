@@ -7,17 +7,10 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="with-hero" padding>
+<ion-content class="with-hero" padding *ngIf="!authProvider.currentUser">
 
   <div class="odds-hero">
     <span>Login for the best local odds and a personalised experience!</span>
-  </div>
-
-  <div class="logged-in-container" *ngIf="authProvider.currentUser">
-    <ion-icon name="checkbox"></ion-icon>
-    <button ion-button (click)="logoutUser()">
-      Logout
-    </button>
   </div>
 
   <ion-segment [(ngModel)]="authType">
@@ -109,5 +102,16 @@
 
     </ion-list>
     
+  </div>
+</ion-content>
+
+<ion-content class="content--logged-in" padding *ngIf="authProvider.currentUser">
+  <div class="logged-in-container" *ngIf="authProvider.currentUser">
+      <ion-icon name="checkbox"></ion-icon>
+      <h1>{{authProvider.currentUser.email}}</h1>
+      <p>Thanks for signing in again!</p>
+      <button ion-button block (click)="logoutUser()">
+        Logout
+      </button>
   </div>
 </ion-content>
