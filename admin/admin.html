@@ -9,6 +9,30 @@
     <script src="https://use.fontawesome.com/1971d92012.js"></script>
   </head>
   <body>
+    <div class="login-overlay">
+      <div class="login-container">
+        <div class="admin-panel-title">
+          Odds<span class="green">Finder</span>
+        </div>
+
+        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+          <label for="email" class="control-label">
+            Email
+          </label>
+          <input type="text" id="email" class="form-control">
+        </div>
+
+        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+          <label for="password" class="control-label">
+            Password
+          </label>
+          <input id="password" class="form-control" type="password">
+        </div>
+
+        <button type="button" class="btn pmd-ripple-effect btn-success btn-block" id="login-btn"> Login </button >
+
+      </div>
+    </div>
     <div class="admin-container">
       <div class="admin-panel">
         <div class="admin-panel-title">
@@ -18,24 +42,85 @@
           <div class="admin-panel-section-title">
             GENERAL
           </div>
-          <div class="admin-panel-tab selected">
+          <div class="admin-panel-tab selected" data-content="matches">
             Matches
-            <!-- <span class="fa fa-chevron-down"></span> -->
+             <span class="fa fa-chevron-right"></span> 
           </div>
+          <div class="admin-panel-tab" data-content="users">
+            Users
+             <span class="fa fa-chevron-right"></span> 
+          </div>
+        </div>
+        <div class="admin-panel-logout" id="logout-btn">
+          <span class="fa fa-power-off"></span> 
+          Logout
         </div>
       </div>
       <div class="admin-main">
-        <div class="admin-search">
-          <input id="search-input" type="text">
-          <button id="search-matches" >Search</button>
+
+        <div class="pmd-card pmd-z-depth content-container matches-content">
+          <div class="table-responsive">
+            <table id="matches-table" class="table pmd-table table-hover table-striped display responsive nowrap" cellspacing="0" width="100%">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th>Date</th>
+                  <th>PsuedoKey</th>
+                  <th>League</th>
+                  <th>Team 1</th>
+                  <th>Team 2</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
         </div>
-        <div class="search-chips"></div>
-        <div class="display-meta"><span class="matches-displayed">0</span> of <span class="matches-total">0</span> matches</div>
-        <div class="admin-content"></div>
+
+        <div class="pmd-card pmd-z-depth content-container users-content">
+          <div class="table-responsive">
+            <table id="users-table" class="table pmd-table table-hover table-striped display responsive nowrap" cellspacing="0" width="100%">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Mobile Number</th>
+                  <th>Email</th>
+                  <th>Latitude</th>
+                  <th>Logitude</th>
+                  <th>Country</th>
+                  <th>Football Team</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+
       </div>
     </div>
+
+    <!-- Display an error alert at the top-right position of the window -->
+    <button id="error-alert" type="button"  data-positionX="right" data-positionY="top" data-effect="fadeInUp" data-message="Failure signing in." data-type="error" class="btn pmd-ripple-effect btn-danger pmd-z-depth pmd-alert-toggle">Alert Error</button>
     
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
+
+    <script src="https://use.fontawesome.com/1971d92012.js"></script>
+
+    <!-- Datatable js -->
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+    <!-- Datatable Bootstrap -->
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
+    <!-- Datatable select js-->
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+
+    <!-- Propeller textfield js -->
+    <script type="text/javascript" src="http://propeller.in/components/textfield/js/textfield.js"></script>
+
+    <!-- Propeller ripple effect js -->
+    <script type="text/javascript" src="http://propeller.in/components/button/js/ripple-effect.js"></script>
+
+    <!-- Propeller alerts js -->
+  <script type="text/javascript" src="http://propeller.in/components/alert/js/alert.js"></script>
   </body>
 </html>
