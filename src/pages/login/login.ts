@@ -78,13 +78,17 @@ export class LoginPage {
               latitude : resp.coords.latitude,
               longitude: resp.coords.longitude
             };
-            let countryCodeUrl = 'http://api.geonames.org/countryCodeJSON?formatted=true&lat=' + this.user.location.latitude + '&lng=' + this.user.location.longitude + '&username=oddsfinder&style=full';
+            let countryCodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + this.user.location.latitude + ',' + this.user.location.longitude + '&key=&key=AIzaSyC0lkUzUVFH4_UbcbF5IurOtPuusq3J2-Y';
             return this.http.get(countryCodeUrl)
               .map((res: any) => res.json())
               .toPromise();
           })
           .then(data => {
-            this.user.country = data.countryName;
+            let addressComponents = data.results[0].address_components;
+            let countryComponent = addressComponents.find(el => {
+              return el.types.includes('country');
+            })
+            this.user.country = countryComponent.long_name;
             this.authProvider.createUser(this.user)
               .then(data => {
                 if (data.error) { 

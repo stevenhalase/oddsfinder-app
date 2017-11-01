@@ -433,13 +433,17 @@ var LoginPage = (function () {
                         latitude: resp.coords.latitude,
                         longitude: resp.coords.longitude
                     };
-                    var countryCodeUrl = 'http://api.geonames.org/countryCodeJSON?formatted=true&lat=' + _this.user.location.latitude + '&lng=' + _this.user.location.longitude + '&username=oddsfinder&style=full';
+                    var countryCodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + _this.user.location.latitude + ',' + _this.user.location.longitude + '&key=&key=AIzaSyC0lkUzUVFH4_UbcbF5IurOtPuusq3J2-Y';
                     return _this.http.get(countryCodeUrl)
                         .map(function (res) { return res.json(); })
                         .toPromise();
                 })
                     .then(function (data) {
-                    _this.user.country = data.countryName;
+                    var addressComponents = data.results[0].address_components;
+                    var countryComponent = addressComponents.find(function (el) {
+                        return el.types.includes('country');
+                    });
+                    _this.user.country = countryComponent.long_name;
                     _this.authProvider.createUser(_this.user)
                         .then(function (data) {
                         if (data.error) {
