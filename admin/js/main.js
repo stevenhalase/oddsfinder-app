@@ -90,6 +90,10 @@ $(document).ready(() => {
     adminManager.SignOut();
   })
 
+  $('#menu').click(e => {
+    $('.admin-panel').toggleClass('menu-open');
+  })
+
   $('.admin-panel-tab').click(e => {
     $('.content-container').hide();
     $('.admin-panel-tab').removeClass('selected');
@@ -97,6 +101,7 @@ $(document).ready(() => {
     let contentId = $(e.currentTarget).data('content');
     $('.' + contentId + '-content').show();
   })
+
 });
 
 $(document).ready(function() {

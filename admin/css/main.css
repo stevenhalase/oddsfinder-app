@@ -194,8 +194,59 @@ body {
   display: none;
 }
 
+.admin-panel .menu {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 22px;
+  display: none;
+  cursor: pointer;
+}
+
+.admin-panel .menu:hover {
+  color: #dcdcdc;
+}
+
 @media screen and (max-width: 768px) {
-    .login-container {
-      width: 90%;
-    }
+  .login-container {
+    width: 90%;
+  }
+
+  .admin-container {
+    flex-direction: column;
+  }
+
+  .admin-main {
+    padding: 15px;
+  }
+
+  .admin-panel {
+    flex: 0 0 100%;
+    min-height: 0;
+    height: 55px;
+    overflow: hidden;
+  }
+
+  .admin-panel .admin-panel-section,
+  .admin-panel .admin-panel-logout {
+    display: none;
+  }
+
+  .admin-panel .menu {
+    display: block;
+  }
+
+  .admin-panel.menu-open {
+    height: auto;
+  }
+
+  .admin-panel.menu-open .admin-panel-section,
+  .admin-panel.menu-open .admin-panel-logout {
+    display: flex;
+  }
+
+  .admin-panel.menu-open .admin-panel-logout {
+    position: relative;
+    justify-content: flex-start;
+  }
 }
