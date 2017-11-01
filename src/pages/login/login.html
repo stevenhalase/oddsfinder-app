@@ -32,7 +32,7 @@
 
       <ion-item [ngClass]="{'invalid': !formFields.password}">
         <ion-label floating>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="user.password" (focus)="passwordFocus = true" (focusout)="passwordFocus = false" (keyup)="validatePassword()"></ion-input>
+        <ion-input type="password" [(ngModel)]="user.password" (focus)="passwordFocus = true" (focusout)="passwordFocus = false" (keyup)="validatePassword()" (keyup.enter)="loginUser()"></ion-input>
       </ion-item>
 
       <div class="password-rules" *ngIf="passwordFocus">
