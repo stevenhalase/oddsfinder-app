@@ -17,8 +17,8 @@ export class AuthProvider {
   public currentUser: any = null;
 
   constructor(public http: Http, public events: Events, public storage: Storage, public loadingCtrl: LoadingController) {
-    // this.apiRoot = 'http://localhost:3080/api/';
-    this.apiRoot = 'https://oddsfinder-api.herokuapp.com/api/';
+    this.apiRoot = 'http://localhost:3080/api/';
+    // this.apiRoot = 'https://oddsfinder-api.herokuapp.com/api/';
     
     this.apiRoutes = {
       getUser: this.apiRoot + 'users',

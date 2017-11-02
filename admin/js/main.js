@@ -8,6 +8,9 @@ class AdminManager {
 
   Init() {
     this.CheckUser();
+    this.InitDateTimePicker();
+    this.InitHandlers();
+    this.InitPostRetrieve();
   }
 
   CheckUser() {
@@ -27,6 +30,7 @@ class AdminManager {
     this.currentUser = null;
     localStorage.removeItem('oddsfinder-admin-user');
     this.Show('.login-overlay');
+    this.ShowAlert('Successfully signed out.');
   }
 
   Show(elSelector) {
@@ -36,72 +40,249 @@ class AdminManager {
   Hide(elSelector) {
     $(elSelector).hide();
   }
-}
 
-var adminManager = new AdminManager();
+  ShowAlert(message, type) {
+    var $positionX = 'right',
+        $positionY = 'top',
+        $dataEffect = 'fadeInUp',
+        $dataMessage = message,
+        $dataType = type,
+        $actionText = undefined,
+        $action = undefined,
+        $duration = undefined;	
+        
+      if($(window).width() < 768){
+        $positionX = "center";
+      }else {
+        $positionX = $positionX;
+      }		
 
-$(document).ready(() => {
-  adminManager.Init();
+      if(!$(".pmd-alert-container."+ $positionX +"."+ $positionY).length){
+        $('body').append("<div class='pmd-alert-container "+$positionX+" "+$positionY+"'></div>");
+      }
+        
+      var $currentPath = $(".pmd-alert-container."+ $positionX +"."+ $positionY);
+      function notificationValue(){
+        if($action == "true"){
+          if($actionText == null){
+            $notification =  "<div class='pmd-alert' data-action='true'>"+$dataMessage+"<a href='javascript:void(0)' class='pmd-alert-close'>×</a></div>";
+          }else{
+            $notification =  "<div class='pmd-alert' data-action='true'>"+$dataMessage+"<a href='javascript:void(0)' class='pmd-alert-close'>"+$actionText+"</a></div>";	
+          }
+          return $notification;
+        }else {
+          if($actionText == null){
+            $notification = "<div class='pmd-alert' data-action='false'>"+$dataMessage+"</div>";
+          }else{
+            $notification =  "<div class='pmd-alert' data-action='false'>"+$dataMessage+"<a href='javascript:void(0)' class='pmd-alert-close'>"+$actionText+"</a></div>";	
+          }
+          return $notification;
+        }
+      }
+      var $notification = notificationValue();
+      var boxLength = $(".pmd-alert-container."+ $positionX +"."+ $positionY + " .pmd-alert").length;
+      
+      if(typeof $duration !== 'undefined'){
+        $duration = $duration;
+      }else {
+        $duration = 3000;
+      }
+      
+      if (boxLength > 0) {
+        if ($positionY == 'top') {
+          $currentPath.append($notification);
+        }
+        else {
+          $currentPath.prepend($notification);
+        }
+        $currentPath.width($(".pmd-alert").outerWidth());
+        if($action == "true"){
+          $currentPath.children("[data-action='true']").addClass("visible" +" "+ $dataEffect);	
+        }else{
+          $currentPath.children("[data-action='false']").addClass("visible" +" "+ $dataEffect).delay($duration).slideUp(
+            function(){
+              $(this).removeClass("visible" +" "+ $dataEffect).remove();
+            });	
+        }
+        $currentPath.children(".pmd-alert").eq(boxLength).addClass($dataType);
+      }else {
+        $currentPath.append($notification);
+        $currentPath.width($(".pmd-alert").outerWidth());
+        if($action == "true"){
+          $currentPath.children("[data-action='true']").addClass("visible" +" "+ $dataEffect);	
+        }else{
+          $currentPath.children("[data-action='false']").addClass("visible" +" "+ $dataEffect).delay($duration).slideUp(
+            function(){
+              $(this).removeClass("visible" +" "+ $dataEffect).remove();
+            });	
+        }
+        $currentPath.children(".pmd-alert").eq(boxLength).addClass($dataType);
+      }
+      var $middle = $(".pmd-alert").outerWidth() / 2;  
+      $(".pmd-alert-container.center").css("marginLeft","-" + $middle+"px");
+  }
 
-  $('#password').keypress(function(e) {
-    if(e.which == 13) {
-        $('#login-btn').click();
-    }
-  })
+  InitHandlers() {
+    this.RegisterLoginHandlers();
+    this.RegisterLogoutHandlers();
+    this.RegisterMobileMenuHandlers();
+    this.RegisterAdminPanelHandlers();
+    this.RegisterPostHandlers();
+  }
 
-  $('#email').keypress(function(e) {
-    if(e.which == 13) {
-        $('#login-btn').click();
-    }
-  })
-  
-  $('#login-btn').click(e => {
-    let email = $('#email').val();
-    let password = $('#password').val();
-
-    $('#email').val('');
-    $('#password').val('');
-
-    // $.post('https://oddsfinder-api.herokuapp.com/api/users', {
-    //   email: email,
-    //   password: password,
-    //   member_type: 'admin'
-    // }, response => {
-    //   if (response.error) {
-    //     console.log(response.error)
-    //   } else {
-    //     console.log(response);
-    //   }
-    // })
-
-    $.post('https://oddsfinder-api.herokuapp.com/api/users/login/admin', {
-      email: email,
-      password: password
-    }, response => {
-      if (response.error) {
-        $('#error-alert').click();
-      } else {
-        adminManager.SignIn(response);
+  RegisterLoginHandlers() {
+    $('#password').keypress(e => {
+      if(e.which == 13) {
+          $('#login-btn').click();
       }
     })
-  })
 
-  $('#logout-btn').click(e => {
-    adminManager.SignOut();
-  })
+    $('#email').keypress(e => {
+      if(e.which == 13) {
+          $('#login-btn').click();
+      }
+    })
+    
+    $('#login-btn').click(e => {
+      let email = $('#email').val();
+      let password = $('#password').val();
 
-  $('#menu').click(e => {
-    $('.admin-panel').toggleClass('menu-open');
-  })
+      $('#email').val('');
+      $('#password').val('');
 
-  $('.admin-panel-tab').click(e => {
-    $('.content-container').hide();
-    $('.admin-panel-tab').removeClass('selected');
-    $(e.currentTarget).addClass('selected');
-    let contentId = $(e.currentTarget).data('content');
-    $('.' + contentId + '-content').show();
-  })
+      // $.post('https://oddsfinder-api.herokuapp.com/api/users', {
+      //   email: email,
+      //   password: password,
+      //   member_type: 'admin'
+      // }, response => {
+      //   if (response.error) {
+      //     console.log(response.error)
+      //   } else {
+      //     console.log(response);
+      //   }
+      // })
 
+      $.post('https://oddsfinder-api.herokuapp.com/api/users/login/admin', {
+        email: email,
+        password: password
+      }, response => {
+        if (response.error) {
+          this.ShowAlert('Failure signing in.', 'error');
+        } else {
+          this.ShowAlert('Successfully signed in.', 'success');
+          this.SignIn(response);
+        }
+      })
+    })
+  }
+
+  RegisterLogoutHandlers() {
+    $('#logout-btn').click(e => {
+      this.SignOut();
+    })
+  }
+
+  RegisterMobileMenuHandlers() {
+    $('#menu').click(e => {
+      $('.admin-panel').toggleClass('menu-open');
+    })
+  }
+
+  RegisterAdminPanelHandlers() {
+    $('.admin-panel-tab').click(e => {
+      $('.content-container').hide();
+      $('.admin-panel-tab').removeClass('selected');
+      $(e.currentTarget).addClass('selected');
+      let contentId = $(e.currentTarget).data('content');
+      $('.' + contentId + '-content').show();
+    })
+  }
+
+  RegisterPostHandlers() {
+    $('#post-submit').click(e => {
+      let author = $('#post-author').val();
+      let date = $('#post-date').val();
+      let published = $('#post-published').is(":checked");
+      let title = $('#post-title').val();
+      let content = $('#post-content').val();
+      let id = $('#post-id').text();
+
+      // $.post('https://oddsfinder-api.herokuapp.com/api/posts/', {
+      //   author: author,
+      //   date: date,
+      //   published: published,
+      //   title: title,
+      //   content: content
+      // }, response => {
+      //   if (response.error) {
+      //     this.ShowAlert('Failure creating post.', 'error');
+      //   } else {
+      //     this.ShowAlert('Successfully created post.', 'success');
+      //   }
+      // })
+
+      $.ajax({
+        url: 'https://oddsfinder-api.herokuapp.com/api/posts/' + id,
+        type: 'PUT',
+        data: {
+          author: author,
+          date: date,
+          published: published,
+          title: title,
+          content: content
+        },
+        success: response => {
+          if (response.error) {
+            this.ShowAlert('Failure updating post.', 'error');
+          } else {
+            this.ShowAlert('Successfully updated post.', 'success');
+          }
+        }
+      });
+    })
+  }
+
+  InitPostRetrieve() {
+    $.get('http://oddsfinder-api.herokuapp.com/api/posts/', posts => {
+      if (posts.length >= 1) {
+        let post = posts[0];
+        $('#post-author').val(post.author);
+        $('#post-date').val(post.date);
+        post.published === true ? $('#post-published').prop('checked', true) : $('#post-published').prop('checked', false);
+        $('#post-title').val(post.title);
+        $('#post-content').val(post.content);
+        $('#post-id').text(post._id);
+
+        this.TextAreaFix('#post-content');
+      }
+    })
+  }
+
+  InitDateTimePicker() {
+    $('#post-date').datetimepicker();
+  }
+
+  TextAreaFix(selector) {
+    $(selector).each(function () {
+      if (this.scrollHeight < 100) {
+        this.setAttribute('style', 'height:100px;overflow-y:hidden;');
+      } else {
+        this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+      }
+    }).on('change keyup keydown paste cut click', function () {
+      this.style.height = 'auto';
+      if (this.scrollHeight < 100) {
+        this.style.height = '100px';
+      } else {
+        this.style.height = (this.scrollHeight) + 'px';
+      }
+    });
+  }
+}
+
+$(document).ready(() => {
+  let adminManager = new AdminManager();
+  adminManager.Init();
 });
 
 $(document).ready(function() {

@@ -32,6 +32,18 @@
 /* Propeller alert */
 @import "https://propeller.in/components/alert/css/alert.css";
 
+/* Propeller checkbox */
+@import "http://propeller.in/components/checkbox/css/checkbox.css";
+
+/* Propeller toggle switch */
+@import "http://propeller.in/components/toggle-switch/css/toggle-switch.css";
+
+/* Bootstrap datetimepicker */
+@import "http://propeller.in/components/datetimepicker/css/bootstrap-datetimepicker.css";
+
+/* Propeller datetimepicker */
+@import "http://propeller.in/components/datetimepicker/css/pmd-datetimepicker.css";
+
 body {
   margin: 0;
 }
@@ -169,13 +181,19 @@ body {
 .login-container {
   background-color: #FFF;
   width: 50%;
-  padding: 50px;
+  padding: 75px 50px 50px 50px;
   border-radius: 5px;
-  box-shadow: 2px 2px 30px -3px rgba(0,0,0,0.8)
+  box-shadow: 2px 2px 30px -3px rgba(0,0,0,0.8);
+  position: relative;
 }
 
 .login-container .admin-panel-title {
   margin-bottom: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
 }
 
 .pmd-textfield-focused {
@@ -205,6 +223,91 @@ body {
 
 .admin-panel .menu:hover {
   color: #dcdcdc;
+}
+
+.posts-content {
+  padding: 25px;
+  position: relative;
+  padding-top: 225px;
+}
+
+.posts-content textarea {
+  resize: none;
+}
+
+.post-meta-container {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.post-meta-container .post-meta-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0 0;
+}
+
+.post-meta-container .post-controls {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 0 20px;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.post-meta-container .post-controls button {
+  margin-left: 10px;
+}
+
+.post-meta-container .post-controls button.pmd-btn-outline {
+  border-color: #6bc241;
+  color: #6bc241;
+}
+
+.post-meta-container .post-controls button.pmd-btn-outline:hover,
+.post-meta-container .post-controls button.pmd-btn-outline:focus {
+  border-color: #6bc241;
+  background-color: #6bc241;
+  color: #FFF;
+}
+
+.post-meta-container .pmd-switch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-meta-container .pmd-switch label input[type="checkbox"]:checked + .pmd-switch-label::after, .togglebutton-default label input[type="checkbox"]:checked + .pmd-switch-label::after {
+  background-color: #68be3f; 
+}
+
+.post-meta-container .pmd-switch label input[type="checkbox"]:checked + .pmd-switch-label, .togglebutton-default label input[type="checkbox"]:checked + .pmd-switch-label {
+  background-color: rgba(104, 190, 63, 0.5);
+}
+
+.post-meta-container #post-id {
+  margin-right: auto;
+  font-size: 10px;
+  color: #555;
+}
+
+.post-published-label {
+  margin-left: 15px;
 }
 
 @media screen and (max-width: 768px) {
